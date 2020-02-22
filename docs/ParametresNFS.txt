@@ -1,0 +1,18 @@
+Paramètres NFS sur Linuxcnc
+
+1 - Création d'un répertoire dans :/home/alexis/Documents/Partage
+
+2 - Changer les droits du répertoire : chmod 777 /home/alexis/Documents/Partage
+
+3 - Configuration de NFS : 
+
+     a - vi /etc/exports
+     b - /home/alexis/Documents/Partage 192.168.2.1(rw,insecure,no_subtree_check)
+
+4 - Stop NFS : /etc/init.d/nfs-kernel-server stop
+
+5 - Start NFS : /etc/init.d/nfs-kernel-server start
+
+6 - Sur OSX : Finder - CTRL + K : nfs://192.168.2.2/home/alexis/Documents/Partage
+
+
