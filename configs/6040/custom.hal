@@ -1,0 +1,41 @@
+# Inclure vos commandes HAL personnalisées ici
+# Ce fichier ne sera pas écrasé si vous relancez Stepconf
+
+# Load the Huanyang VFD user component
+# https://github.com/babs/cnc-linuxcnc-nowforever_vfd
+#
+loadusr -Wn vfd python /home/alexis/linuxcnc/configs/6040/nowforever_vfd.py
+#loadusr -Wn spindle-vfd hy_vfd -n spindle-vfd -t 1 -d /dev/ttyUSB0 -p none -r 38400 -s 1
+
+# Affecte 1 à la commande
+setp vfd.spdvfd.run 1
+
+# Direction de la broche
+net spindle-fwd motion.spindle-forward => vfd.spdvfd.forward
+
+# Démarre la broche et la pompe à eau (pin-16-out)
+net spindle-on motion.spindle-on => vfd.spdvfd.run => parport.0.pin-16-out
+
+# Permet d'attendre que la broche soit à la bonne vitesse
+net spindle-ready <= vfd.spdvfd.atfreq => motion.spindle-at-speed
+
+# Vitesse de la broche
+net spindle-cmd-rpm-abs => vfd.spdvfd.rpmset
+
+# Ampérage de la broche
+net spindle-cmd-amperage => vfd.spdvfd.outcurrent
+
+#-- https://wapl.es/cnc/2015/12/04/huanyang-linuxcnc-2.7-speed-control.html
+#
+
+
+# Z Probe
+#limits debounce to stop false triggers
+loadrt debounce cfg=1 #change  to the number you want
+setp debounce.0.delay 10 #this sets the delay 100 iterations of the base thread
+addf debounce.0 base-thread
+#net probe-in => motion.probe-input
+
+
+
+

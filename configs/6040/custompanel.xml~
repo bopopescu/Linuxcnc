@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pyvcp>
+
+   <hbox>
+
+      <relief>RAISED</relief>
+
+      <bd>3</bd>
+
+      <meter>
+
+         <halpin>"spindle-speed"</halpin>
+
+         <text>"Broche"</text>
+
+         <subtext>"tr/mn"</subtext>
+
+         <size>250</size>
+
+         <min_>0</min_>
+
+         <max_>24000</max_>
+
+         <majorscale>2000</majorscale>
+
+         <minorscale>1000</minorscale>
+
+         <region1>0,6000,"yellow"</region1>
+	 <region2>6000,20000,"green"</region2>
+	 <region3>20000,24000,"red"</region3>
+
+      </meter>
+
+   </hbox>
+   
+  
+   
+   <vbox>
+
+      <hbox>
+
+         <relief>RIDGE</relief>
+
+         <bd>2</bd>
+
+         <button>
+
+            <halpin>"o101"</halpin>
+
+            <text>"Rapid to X0 - Y0"</text>
+
+            <font>('Fixed',10)</font>
+
+         </button>
+
+         <button>
+
+            <halpin>"o105"</halpin>
+
+            <text>"Rapid to Home"</text>
+
+            <font>('Fixed',10)</font>
+
+         </button>
+
+      </hbox>
+
+      <hbox>
+
+         <relief>RIDGE</relief>
+
+         <bd>2</bd>
+
+         <button>
+
+            <halpin>"o106"</halpin>
+
+            <text>"Set X0 - YO"</text>
+
+            <font>('Fixed',10)</font>
+
+         </button>
+
+         <button>
+
+            <halpin>"o107"</halpin>
+
+            <text>"Set Z0"</text>
+
+            <font>('Fixed',10)</font>
+
+         </button>
+
+      </hbox>
+
+      <button>
+
+         <halpin>"o100"</halpin>
+
+         <text>"Touch Corner"</text>
+
+         <font>('fixed',16)</font>
+
+      </button>
+
+      <button>
+
+         <halpin>"o103"</halpin>
+
+         <text>"Touch Off Z"</text>
+
+         <font>('fixed',16)</font>
+
+      </button>
+
+      <button>
+
+         <halpin>"o104"</halpin>
+
+         <text>"Touch Laser"</text>
+
+         <font>('fixed',16)</font>
+
+      </button>
+
+      <button>
+
+         <halpin>"o108"</halpin>
+
+         <text>"Center Hole"</text>
+
+         <font>('fixed',16)</font>
+
+      </button>
+
+   </vbox>
+
+   <labelframe text="Temps écoulé">
+
+      <font>("Helvetica",10)</font>
+
+      <hbox>
+
+         <relief>RAISED</relief>
+
+         <bd>1</bd>
+
+         <label>
+
+            <text>"Time:"</text>
+
+            <font>("Helvetica",10)</font>
+
+         </label>
+
+         <u32>
+
+            <halpin>"elaps_hour"</halpin>
+
+            <font>("Helvetica",10)</font>
+
+            <format>"02d:"</format>
+
+         </u32>
+
+         <u32>
+
+            <halpin>"elaps_min"</halpin>
+
+            <font>("Helvetica",10)</font>
+
+            <format>"02d:"</format>
+
+         </u32>
+
+         <u32>
+
+            <halpin>"elaps_sec"</halpin>
+
+            <font>("Helvetica",10)</font>
+
+            <format>"02d"</format>
+
+         </u32>
+
+      </hbox>
+
+   </labelframe>
+
+</pyvcp>

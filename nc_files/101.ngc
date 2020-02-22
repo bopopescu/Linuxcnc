@@ -1,0 +1,6 @@
+o101 sub
+	(*** Goto X0 Y0 ***)
+	M5             (Arret de la broche)
+	G90 G53 G0 Z0  (Mise en securite de Z)
+	G0 X0 Y0	
+o101 endsub

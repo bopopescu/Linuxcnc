@@ -1,0 +1,50 @@
+# Inclure vos commandes HAL personnalisées ici
+# Les commandes contenues dans ce fichier seront lancées après quel'interface graphique AXIS (PyVCP inclus) aura démarré.
+
+# **** Réglage de l'affichage de vitesse broche avec pyvcp -START ****
+# **** Utilise la vitesse de broche COMMANDÉE depuis LinuxCNC puisqu'aucun codeur de broche n'a été spécifié
+
+# Permet de lier les infos à l'affichage
+net spindle-cmd-rpm-abs    => pyvcp.spindle-speed
+net spindle-cmd-amperage    => pyvcp.spindle-amperage
+
+# *** Cmd pour G0 X0 Y0  ***************************
+net remote-o101 halui.mdi-command-00 <= pyvcp.o101
+
+# *** Cmd pour G0 X0 Y0  Z0 ************************
+net remote-o102 halui.mdi-command-01 <= pyvcp.o102
+
+# *** Cmd pour G92 X0 Y0 ***************************
+net remote-o103 halui.mdi-command-02 <= pyvcp.o103
+
+# *** Cmd pour Touch corner ************************
+net remote-o104 halui.mdi-command-03 <= pyvcp.o104
+
+# *** Z Probe **************************************
+net remote-o105 halui.mdi-command-04 <= pyvcp.o105
+
+# *** Center Hole *******************************
+net remote-o110 halui.mdi-command-09 <= pyvcp.o110
+
+# *** Epaisseur Table*******************************
+net remote-o111 halui.mdi-command-10 <= pyvcp.o111
+
+# *** Epaisseur Pièce*******************************
+net remote-o112 halui.mdi-command-11 <= pyvcp.o112
+
+# *** Pin pour la led du probe *********************
+net probe-in => pyvcp.led-probe-in
+
+# Elapsed time
+# Charge le composant timer
+loadrt time
+# Ajoute le fil de servo
+addf time.0 servo-thread
+# Dès que le programme démarre, le timer se lance
+#net prog-is-running <= halui.program.is-running
+net pendant:is-running => time.0.start
+# Affiche l'heure dans le paneau
+net cycle-seconds time.0.seconds => pyvcp.elaps_sec
+net cycle-minutes time.0.minutes => pyvcp.elaps_min
+net cycle-hours time.0.hours => pyvcp.elaps_hour
+

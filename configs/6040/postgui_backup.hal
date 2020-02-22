@@ -1,0 +1,35 @@
+# Inclure vos commandes HAL personnalisées ici
+# Les commandes contenues dans ce fichier seront lancées après quel'interface graphique AXIS (PyVCP inclus) aura démarré.
+
+# **** Réglage de l'affichage de vitesse broche avec pyvcp -START ****
+# **** Utilise la vitesse de broche COMMANDÉE depuis LinuxCNC puisqu'aucun codeur de broche n'a été spécifié
+
+#net spindle-cmd-rpm-abs    => pyvcp.spindle-speed
+#net spindle-at-speed => pyvcp.spindle-at-speed-led
+#sets spindle-at-speed true
+
+#-- https://wapl.es/cnc/2015/12/04/huanyang-linuxcnc-2.7-speed-control.html
+#
+net spindle-at-speed => pyvcp.spindle-at-speed
+net pyvcp-spindle-rpm spindle-vfd.spindle-speed-fb => pyvcp.spindle-speed
+net pyvcp-modbus-ok spindle-vfd.hycomm-ok => pyvcp.hycomm-ok
+
+
+# *** Cmd pour G0 X0 Y0 Z0 ************************
+net remote-rapid-to-home halui.mdi-command-00 <= pyvcp.rapid-to-home
+
+# *** Z Probe **************************************
+net remote-o100 halui.mdi-command-01 <= pyvcp.o100
+
+# *** Rapide Home **********************************
+net remote-o101 halui.mdi-command-02 <= pyvcp.o101
+
+# *** Center Hole **********************************
+net remote-o102 halui.mdi-command-03 <= pyvcp.o102
+
+# *** Find X and Y *********************************
+net remote-o103 halui.mdi-command-04 <= pyvcp.o103
+
+# *** Laser G0 X0 Y0 *********************************
+net remote-o104 halui.mdi-command-05 <= pyvcp.o104
+

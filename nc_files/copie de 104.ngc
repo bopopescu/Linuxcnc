@@ -1,0 +1,46 @@
+o104 sub
+   
+   (******** TOUCH CORNER **********)
+   
+   
+   #1001=6 (Diametre de la fraise)
+   #1003=10 (Descente de Z)
+   
+   #1002=[#1001 / 2]
+   
+   (debug, diametre : #1001)
+
+   (Probe X)
+   (debug, Cherche X)
+   G91
+   G0 X-23
+   G91
+   G0 Z-#1003
+   G38.2 X50 F200 (Palpe vers la pièce)
+   G91
+   G0 X-0.5
+   G4 P0.5 (Attente en ms)
+   G38.2 X2 f20
+   G92 X -#1002
+   G91
+   G0 X-3
+   
+   (Probe Y)
+   (debug, Cherche Y)
+   G0 Y-20 F1200
+   G0 X20
+   G38.2 Y50 F200
+   G91
+   G0 Y-0.5
+   G4 P0.5
+   G38.2 Y2 f20
+   G92 Y -#1002 (4.8 epaisseur de l'encoche)
+   G91
+   G0 Z#1003
+   G90
+   G4 P0.1
+   G0 X0 Y0
+   
+   (debug, Fin)
+    	
+o104 endsub

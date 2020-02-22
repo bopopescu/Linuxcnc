@@ -1,0 +1,23 @@
+o112 sub
+   (*** Epaisseur Pièce ***)
+   (AXIS,show)
+   (AXIS,notify, test : #<_z> - EXITING)
+  
+   G21 (Programme en mm)
+   M5  (Arret de la broche)
+   G91
+   G38.2 Z-30 F150 (Cherche contact sur Z)
+   G0 Z1 (Remonte Z de 1)
+   G4 P0.5 (Faire une pause)
+   G38.2 Z-3 f20 (Recherche lentement Z)
+   G0 Z0.5 (Remonte Z de 1)
+   G4 P0.5 (Faire une pause)
+   G38.2 Z-3 f10 (Recherche lentement Z)
+   G0 Z0.25 (Remonte Z de 1)
+   G4 P0.5 (Faire une pause)
+   G38.2 Z-3 f10 (Recherche lentement Z)
+   G91
+   (debug, Epaisseur : #<_z>)
+   G90 G53 G0 Z0 (Mise en securite de Z)
+G90
+o112 endsub
