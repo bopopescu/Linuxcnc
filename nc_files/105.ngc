@@ -16,7 +16,7 @@ o105 sub
    G0 Z0.25 (Remonte Z de 1)
    G4 P0.5 (Faire une pause)
    G38.2 Z-3 f10 (Recherche lentement Z)
-   G92 Z20.115 (Epaisseur de la gauge)
+   G92 Z13.06 (Epaisseur de la gauge)
    G91
    G90 G53 G0 Z0 (Mise en securite de Z)
 G90
