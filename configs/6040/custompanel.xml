@@ -58,7 +58,7 @@
          <button>
             <halpin>"o103"</halpin>
             <text>"Set X0 - Y0"</text>
-            <font>('Fixed',10)</font>
+            <font>('Fixed',14)</font>
          </button>
       </hbox>
 
@@ -78,7 +78,12 @@
          </button>
       </hbox>
 
-      
+      <button>
+         <halpin>"o105"</halpin>
+         <text>"Touche Off Z"</text>
+         <font>('fixed',16)</font>
+      </button>
+
       <button>
          <halpin>"o111"</halpin>
          <text>"Référence Table"</text>
@@ -91,11 +96,7 @@
          <font>('fixed',16)</font>
       </button>
 
-      <button>
-         <halpin>"o105"</halpin>
-         <text>"Touche Off Z"</text>
-         <font>('fixed',16)</font>
-      </button>
+      
 
       <button>
          <halpin>"o104"</halpin>
