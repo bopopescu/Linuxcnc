@@ -4,10 +4,10 @@ o105 sub
    G21 (Programme en mm)
    M5  (Arret de la broche)
    G90 G53 G0 Z0 (Mise en securite de Z)
-   G0 X254.238 Y-89.176 (Position du capteur)
+   G90 G53 X-6 Y-525 (Position du capteur)
    G90 G53 Z-5 (Faire descendre Z)
    G91
-   G38.2 Z-60 F150 (Cherche contact sur Z)
+   G38.2 Z-60 F300 (Cherche contact sur Z)
    G0 Z1 (Remonte Z de 1)
    G4 P0.5 (Faire une pause)
    G38.2 Z-3 f20 (Recherche lentement Z)

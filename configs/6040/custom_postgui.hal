@@ -23,6 +23,9 @@ net remote-o104 halui.mdi-command-03 <= pyvcp.o104
 # *** Z Probe **************************************
 net remote-o105 halui.mdi-command-04 <= pyvcp.o105
 
+# *** G92 Z0 **************************************
+net remote-o106 halui.mdi-command-05 <= pyvcp.o106
+
 # *** Center Hole *******************************
 net remote-o110 halui.mdi-command-09 <= pyvcp.o110
 
@@ -35,16 +38,18 @@ net remote-o112 halui.mdi-command-11 <= pyvcp.o112
 # *** Pin pour la led du probe *********************
 net probe-in => pyvcp.led-probe-in
 
-# Elapsed time
-# Charge le composant timer
-loadrt time
-# Ajoute le fil de servo
-addf time.0 servo-thread
-# Dès que le programme démarre, le timer se lance
-#net prog-is-running <= halui.program.is-running
-net pendant:is-running => time.0.start
-# Affiche l'heure dans le paneau
-net cycle-seconds time.0.seconds => pyvcp.elaps_sec
-net cycle-minutes time.0.minutes => pyvcp.elaps_min
-net cycle-hours time.0.hours => pyvcp.elaps_hour
+# *** Vitesse de déplacement *********************
+loadrt mult2
+addf mult2.0 servo-thread
+setp mult2.0.in1 60
+net vel-sec <= motion.current-vel => mult2.0.in0
+net vel-min <= mult2.0.out => pyvcp.speed_motion
+net vel-min <= mult2.0.out => pyvcp.speed_motion_texte
+
+# *** Les switchs de limite *********************
+net both-home-x => pyvcp.led-x-in
+net both-home-y => pyvcp.led-y-in
+net both-home-z => pyvcp.led-z-in
+
+
 
